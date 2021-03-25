@@ -517,20 +517,51 @@ void Game::update()
 	//Matrix3 triangle1 = { vertex[1].coordinate[1], vertex[1].coordinate[1], vertex[1].coordinate[1] };
 
 
-	/*Matrix3 newRotation = newRotation.RotationY(-1);
+	Matrix3 newRotation = newRotation.RotationX(-1);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 	{
-		for (int i = 0; i < 107; i += 3)
+		for (int i = 0; i < 36; i += 3)
 		{
-			MyVector3 vecort(triangles[i], triangles[i + 1], triangles[i + 2]);
-			vecort = newRotation.operatorMultiply(newRotation, vecort);
-			triangles[i] = vecort.x;
-			triangles[i + 1] = vecort.y;
-			triangles[i + 2] = vecort.z;
+			MyVector3 vecort(vertex[i].coordinate[i], vertex[i].coordinate[i + 1], vertex[i].coordinate[i + 2]);
+					vecort = newRotation.operatorMultiply(newRotation, vecort);
+					vertex[i].coordinate[i] = vecort.x;
+					vertex[i].coordinate[i+1] = vecort.y;
+					vertex[i].coordinate[i+2] = vecort.z;
 		}
-	}*/
+		//
+	}
 
 
+
+	Matrix3 newRotationY = newRotationY.RotationY(-1);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
+	{
+		for (int i = 0; i < 36; i += 3)
+		{
+			MyVector3 vecort(vertex[i].coordinate[i], vertex[i].coordinate[i + 1], vertex[i].coordinate[i + 2]);
+			vecort = newRotationY.operatorMultiply(newRotationY, vecort);
+			vertex[i].coordinate[i] = vecort.x;
+			vertex[i].coordinate[i + 1] = vecort.y;
+			vertex[i].coordinate[i + 2] = vecort.z;
+		}
+		//
+	}
+
+
+
+	Matrix3 newRotationZ = newRotationZ.RotationZ(-1);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+	{
+		for (int i = 0; i < 36; i += 3)
+		{
+			MyVector3 vecort(vertex[i].coordinate[i], vertex[i].coordinate[i + 1], vertex[i].coordinate[i + 2]);
+			vecort = newRotationZ.operatorMultiply(newRotationZ, vecort);
+			vertex[i].coordinate[i] = vecort.x;
+			vertex[i].coordinate[i + 1] = vecort.y;
+			vertex[i].coordinate[i + 2] = vecort.z;
+		}
+		//
+	}
 	//Change vertex data
 	//vertex[0].coordinate[0] += -0.0001f;
 	//vertex[0].coordinate[1] += -0.0001f;
